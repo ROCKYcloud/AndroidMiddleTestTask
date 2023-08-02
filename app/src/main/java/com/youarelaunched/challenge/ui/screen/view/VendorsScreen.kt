@@ -32,10 +32,8 @@ fun VendorsScreen(
         backgroundColor = VendorAppTheme.colors.background,
         snackbarHost = { ChatsumerSnackbar(it) }
     ) { paddings ->
-        Column(modifier = Modifier.fillMaxSize()) {
-            SearchView(onSearch = {
-                viewModel.getSearchVendors(it)
-            })
+        Box(modifier = Modifier.fillMaxSize()) {
+
             if (!uiState.vendors.isNullOrEmpty()) {
                 LazyColumn(
                     modifier = Modifier
@@ -43,8 +41,10 @@ fun VendorsScreen(
                         .fillMaxWidth(),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     contentPadding = PaddingValues(
-                        vertical = 24.dp,
-                        horizontal = 16.dp
+                        top = 80.dp,
+                        bottom = 24.dp,
+                        start = 16.dp,
+                        end = 16.dp
                     )
                 ) {
                     items(uiState.vendors) { vendor ->
@@ -62,8 +62,10 @@ fun VendorsScreen(
                 ) {
                     Text(text = "No result")
                 }
-
             }
+            SearchView(onSearch = {
+                viewModel.getSearchVendors(it)
+            })
         }
     }
 }

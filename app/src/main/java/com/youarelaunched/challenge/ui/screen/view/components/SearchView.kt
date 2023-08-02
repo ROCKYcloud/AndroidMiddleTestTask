@@ -4,11 +4,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -22,8 +25,9 @@ fun SearchView(onSearch: (String) -> Unit = {}) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 16.dp, end = 16.dp, top = 16.dp)
-            .border(width = 1.dp, color = Color.Gray, shape = CircleShape)
-            .background(Color.White)
+            .shadow(elevation = 16.dp,shape = CircleShape)
+            .clip(CircleShape)
+            .background(color = Color.White, shape = CircleShape)
             .onFocusChanged {
             },
         value = text,
